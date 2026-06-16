@@ -13,7 +13,14 @@ st.set_page_config(
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-st.title("🚨 Legal First Aid")
+st.markdown(
+    """
+    <h1 style="font-size:2.5rem;">
+        🚨 Legal First Aid
+    </h1>
+    """,
+    unsafe_allow_html=True
+)
 
 st.caption(
     "Meet 👨‍⚖️ Lawyer Uncle — your AI-powered legal assistant for everyday problems."
