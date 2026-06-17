@@ -10,7 +10,7 @@ Legal First Aid AI helps users understand what to do immediately after common le
 
 ## 🌐 Live Demo
 
-**Streamlit App:** [Add Your Deployment Link Here]
+**Streamlit App:** https://legal-first-aid-ai-d6opedus7bp46t8g5fn9fm.streamlit.app/
 
 ---
 
