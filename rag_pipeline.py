@@ -1,4 +1,4 @@
-```python
+
 from groq import Groq
 from sentence_transformers import SentenceTransformer
 from dotenv import load_dotenv
@@ -60,8 +60,19 @@ def classify_intent(query):
 
     # Blackmail / threat rule
     if (
-        ("threat" in query or "threatening" in query or "blackmail" in query or "leak" in query)
-        and ("photo" in query or "photos" in query or "video" in query or "money" in query or "upi" in query)
+        (
+            "threat" in query
+            or "threatening" in query
+            or "blackmail" in query
+            or "leak" in query
+        )
+        and (
+            "photo" in query
+            or "photos" in query
+            or "video" in query
+            or "money" in query
+            or "upi" in query
+        )
     ):
         return "harassment"
 
@@ -89,8 +100,6 @@ def classify_intent(query):
         "documents",
         "lost my aadhaar",
         "lost my pan",
-
-        # Additional document-related phrases
         "complaint file",
         "complaint copy",
         "lost complaint",
@@ -175,7 +184,12 @@ def get_source_category(source):
     if "account_hacking" in source:
         return "account"
 
-    if "upi" in source or "fraud" in source or "bank" in source or "job_scam" in source:
+    if (
+        "upi" in source
+        or "fraud" in source
+        or "bank" in source
+        or "job_scam" in source
+    ):
         return "fraud"
 
     if "document_loss" in source:
@@ -303,7 +317,10 @@ This information is not available in the provided context.
     context = ""
 
     for i, item in enumerate(docs):
-        context += f"[Chunk {i+1} | Source: {item['source']}]\n{item['chunk']}\n\n"
+        context += (
+            f"[Chunk {i+1} | Source: {item['source']}]\n"
+            f"{item['chunk']}\n\n"
+        )
 
     prompt = f"""
 Context:
@@ -383,6 +400,4 @@ Important Notes
         "sources": used_sources,
         "confidence": confidence
     }
-```
-
 
