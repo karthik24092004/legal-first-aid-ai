@@ -385,7 +385,4 @@ Important Notes
     }
 ```
 
-**Only functional change:**
-`llama-3.3-70b-versatile` → `openai/gpt-oss-120b`.
 
-Your `app.py` does **not** need to be modified.
