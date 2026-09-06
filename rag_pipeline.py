@@ -1,3 +1,4 @@
+```python
 from groq import Groq
 from sentence_transformers import SentenceTransformer
 from dotenv import load_dotenv
@@ -78,24 +79,24 @@ def classify_intent(query):
     ]
 
     document_keywords = [
-    "aadhaar",
-    "aadhar",
-    "pan card",
-    "passport",
-    "driving licence",
-    "license",
-    "document",
-    "documents",
-    "lost my aadhaar",
-    "lost my pan",
+        "aadhaar",
+        "aadhar",
+        "pan card",
+        "passport",
+        "driving licence",
+        "license",
+        "document",
+        "documents",
+        "lost my aadhaar",
+        "lost my pan",
 
-    # Additional document-related phrases
-    "complaint file",
-    "complaint copy",
-    "lost complaint",
-    "lost file",
-    "lost documents",
-    "case file"
+        # Additional document-related phrases
+        "complaint file",
+        "complaint copy",
+        "lost complaint",
+        "lost file",
+        "lost documents",
+        "case file"
     ]
 
     employment_keywords = [
@@ -176,19 +177,19 @@ def get_source_category(source):
 
     if "upi" in source or "fraud" in source or "bank" in source or "job_scam" in source:
         return "fraud"
-    
+
     if "document_loss" in source:
         return "document"
-    
+
     if "employment_issues" in source:
         return "employment"
-    
+
     if "consumer_disputes" in source:
         return "consumer"
-    
+
     if "land_property" in source or "property" in source:
         return "property"
-    
+
     if "identity_theft" in source:
         return "identity"
 
@@ -209,8 +210,6 @@ def get_source_category(source):
         or "laptop_theft" in source
     ):
         return "theft"
-
-    
 
     return "general"
 
@@ -243,8 +242,6 @@ def retrieve_documents(query, k=8, forced_intent=None):
             break
 
     return results, intent
-
-
 
 
 # ---------------------------
@@ -367,7 +364,7 @@ Important Notes
 """
 
     response = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model="openai/gpt-oss-120b",
         messages=[
             {
                 "role": "user",
@@ -386,3 +383,9 @@ Important Notes
         "sources": used_sources,
         "confidence": confidence
     }
+```
+
+**Only functional change:**
+`llama-3.3-70b-versatile` → `openai/gpt-oss-120b`.
+
+Your `app.py` does **not** need to be modified.
